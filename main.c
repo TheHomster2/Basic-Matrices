@@ -51,8 +51,26 @@ int main() {
   matrix_mult(copy, edges);
   print_matrix(edges);
 
-  draw_lines(edges, s, c);
+  free_matrix(copy);
+  c.red = 40;
+  c.blue = 155;
+  c.green = 234;
+
+  int x;
+  int y;
+  int z;
+
+  for (x = 255; x > 0; x-=2){
+  	for (y = 250; y > 0; y--){
+  		for (z = 255; z > 0; z-=2){
+  			add_edge(copy, x, y, z, x + 3, 0, z + 2);
+  		}
+  	}
+  }
+  
+  draw_lines(copy, s, c);
   display(s);
+  save_extension(s, "hom.png");
   free_matrix( edges );
   free_matrix( copy );
   free_matrix( temp );
